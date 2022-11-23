@@ -130,8 +130,7 @@ labelredleft.setFont(QtGui.QFont("Lato",12))
 labelgreemleft.setFont(QtGui.QFont("Lato",12))
 labelblueleft.setFont(QtGui.QFont("Lato",12))
 button.setFont(QtGui.QFont("Lato",12))
-menu=QtWidgets.QMenuBar()
-settings=menu.addAction("Settings")
+
 
 #setting custom fonts
 sizelabel1.setFont(QtGui.QFont("Lato",12))
