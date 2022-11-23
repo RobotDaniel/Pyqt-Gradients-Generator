@@ -143,7 +143,7 @@ textbox=QtWidgets.QTextEdit()
 textbox.setMaximumHeight(30)
 textbox.setText("1:1")
 #adding widgets to layout 
-mainlayout.addWidget(menu,0,0)
+
 mainlayout.addWidget(textbox,4,0)
 
 layout.addWidget(leftlabel,0,0)
