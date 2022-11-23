@@ -4,9 +4,6 @@ import sys
 from PyQt5 import QtWidgets, QtCore, QtGui
 import cv2
 import numpy
-def open1():
-    import Settings
-
 app=QtWidgets.QApplication([])
 window= QtWidgets.QWidget()
 window.setMinimumSize(300,150)
@@ -16,8 +13,9 @@ slidergreenleft=QtWidgets.QSlider(Qt.Horizontal)
 sliderblueleft=QtWidgets.QSlider(Qt.Horizontal)
 
 sliderredleft.setMinimum(0)
-sliderredleft.setStyleSheet('''Qslider::groove{background-color:rgb(200,0,0);}''')
+
 def gen():
+    #function to genarate gradients
     global slidergreenleft
     global sliderblueleft
     global sliderredleft
@@ -40,14 +38,11 @@ def gen():
     print("aspecty=",aspecty)
     
 
-
-    
-    
     size=slidersize.value()
     yx=aspecty/aspectx
     yxxsize=int(yx*size)
 
-    
+    #printing the varibles
     print("size=",size)
     redleft=sliderredleft.value()
     print("redleft=",redleft)
@@ -65,7 +60,7 @@ def gen():
 
     
     
-    
+    #generating Gradient with Cv2 
     first=numpy.array([blueleft,greenleft,redleft])
     last=numpy.array([blueright,greenright,redright])
     row=numpy.linspace(first,last,num=5000)
@@ -83,7 +78,7 @@ def settext():
     slidersizevalue=slidersize.value()
     if slidersizevalue > 68:
         sizelabel2.setText(str(slidersizevalue))
-    
+#setting slider min + max values
 slidergreenleft.setMaximum(255)
 slidergreenleft.setMinimum(0)
 sliderblueleft.setMaximum(255)
@@ -92,27 +87,30 @@ sliderredleft.setMaximum(255)
 slidersize=QtWidgets.QSlider(Qt.Horizontal)
 slidersize.setMaximum(1300)
 slidersize.setMinimum(50)
+
 labelredleft=QtWidgets.QLabel("Red")
 labelgreemleft=QtWidgets.QLabel("Green")
 labelblueleft=QtWidgets.QLabel("Blue")
 button=QtWidgets.QPushButton("Genarate")
 button.clicked.connect(gen)
 layout=QtWidgets.QGridLayout()
-slidersize.setStyleSheet("backround-color:black;")
+
 layout.setColumnStretch(0,6)
 layout.setColumnStretch(1,6)
 mainlayout=QtWidgets.QGridLayout()
 layout3=QtWidgets.QGridLayout()
 labelredright=QtWidgets.QLabel("Red")
+#setting custom fonts
 labelredright.setFont(QtGui.QFont("Lato",12))
 labelblueleft.setFont(QtGui.QFont("Lato",12))
-
 labelgreemright=QtWidgets.QLabel("Green")
 labelgreemright.setFont(QtGui.QFont("Lato",12))
 labelblueright=QtWidgets.QLabel("Blue")
 labelblueright.setFont(QtGui.QFont("Lato",12))
 sliderredright=QtWidgets.QSlider(Qt.Horizontal)
+#setting custom fonts 
 sliderredright.setFont(QtGui.QFont("Lato",12))
+
 slidergreenright=QtWidgets.QSlider(Qt.Horizontal)
 sliderblueright=QtWidgets.QSlider(Qt.Horizontal)
 sizelabel1=QtWidgets.QLabel("^50")
@@ -125,25 +123,30 @@ sizelabel3.setAlignment(QtCore.Qt.AlignRight)
 rightlabel=QtWidgets.QLabel("Right")                                                                                                                                           
 rightlabel.setFont(QtGui.QFont("Lato",14,QtGui.QFont.Bold))
 leftlabel.setFont(QtGui.QFont("Lato",14,QtGui.QFont.Bold))
+#setting main layout 
 window.setLayout(mainlayout) 
+#setting custom fonts
 labelredleft.setFont(QtGui.QFont("Lato",12))
 labelgreemleft.setFont(QtGui.QFont("Lato",12))
 labelblueleft.setFont(QtGui.QFont("Lato",12))
 button.setFont(QtGui.QFont("Lato",12))
 menu=QtWidgets.QMenuBar()
 settings=menu.addAction("Settings")
-#settings.clicked.connect(open1)
 
+#setting custom fonts
 sizelabel1.setFont(QtGui.QFont("Lato",12))
 sizelabel2.setFont(QtGui.QFont("Lato",12))
 sizelabel3.setFont(QtGui.QFont("Lato",12))
+
 loop=QtCore.QTimer()
 loop.timeout.connect(settext)
 textbox=QtWidgets.QTextEdit()
 textbox.setMaximumHeight(30)
 textbox.setText("1:1")
+#adding widgets to layout 
 mainlayout.addWidget(menu,0,0)
 mainlayout.addWidget(textbox,4,0)
+
 layout.addWidget(leftlabel,0,0)
 layout.addWidget(sliderredleft,1,0)
 layout.addWidget(labelredleft,2,0)
@@ -161,7 +164,6 @@ layout.addWidget(sliderblueright,5,1)
 layout.addWidget(labelblueright,6,1)
 mainlayout.addLayout(layout,1,0)
 mainlayout.addLayout(layout3,3,0)
-
 mainlayout.addWidget(slidersize,2,0)
 layout3.addWidget(sizelabel1,2,0)
 layout3.addWidget(sizelabel2,2,8)
