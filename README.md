@@ -1,7 +1,7 @@
 # Pyqt-Gradients-Generator
 
 ### Requirements  
-Python 3.9 or Above  
+Python 3.8.x or Above  
 (please let me know if it works in other versions)  
 
 Pyqt5  
