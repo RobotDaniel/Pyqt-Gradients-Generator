@@ -22,14 +22,14 @@ def gen():
     global slidergreenright
     global sliderblueright
     global sliderredright
-    global textbox
+    global aspectRatioInput
     global slidersize
-    global size
+    #global size
     global aspectratio
-    global aspect_list1
+    #global aspect_list1
    
     global res
-    aspectratio=textbox.toPlainText()
+    aspectratio=aspectRatioInput.toPlainText()
     print(aspectratio)
     aspect_list1=aspectratio.split(":")
     aspectx=int(aspect_list1[0])
@@ -139,12 +139,12 @@ sizelabel3.setFont(QtGui.QFont("Lato",12))
 
 loop=QtCore.QTimer()
 loop.timeout.connect(settext)
-textbox=QtWidgets.QTextEdit()
-textbox.setMaximumHeight(30)
-textbox.setText("1:1")
+aspectRatioInput=QtWidgets.QTextEdit()
+aspectRatioInput.setMaximumHeight(30)
+aspectRatioInput.setText("1:1")
 #adding widgets to layout 
 
-mainlayout.addWidget(textbox,4,0)
+mainlayout.addWidget(aspectRatioInput,4,0)
 
 layout.addWidget(leftlabel,0,0)
 layout.addWidget(sliderredleft,2,0)

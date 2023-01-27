@@ -10,4 +10,5 @@ Pyqt5
 Opencv2  
 `pip install opencv-python`
 
+## how it works
 
